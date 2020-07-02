@@ -63,7 +63,7 @@ public class ChilkatSCPDownload {
 			System.exit(1);
 		}
 	}
-
+	//chilkat scp download
 	public void chilkatSCPDownLoad(String hostname, int port, String user_connect, String password_connect,
 			String synMustMath, String server_path, String local_path, int mode_scp) {
 		CkSsh ssh = new CkSsh();
@@ -101,7 +101,7 @@ public class ChilkatSCPDownload {
 
 		ssh.Disconnect();
 	}
-
+	//kiểm tra đã download dược hay chưa
 	public boolean isDownLoadSCPChilkat() {
 		boolean result = false;
 		sql = "SELECT * FROM scp";
@@ -143,12 +143,13 @@ public class ChilkatSCPDownload {
 
 		return result;
 	}
-
+	//insert file local to log 
 	public boolean insertDataLog() {
 		int rs = 0;
 		boolean check = false;
 		if (!isDownLoadSCPChilkat()) {
-			sendMail("17122099@st.hcmuaf.edu.vn", "GỬI CÔNG CHÚA YÊU DẤU CỦA ANH!", "I LOVE YOU, VERY NHIỀUUUU");
+			//download thất bại hay cái vấn đề gì ở download thì gửi mail về báo lỗi
+			sendMail("nguyentrongnghia.itnlu@gmail.com", "DATA WAREHOUSE", "DOWNLOAD FILE FAIL!...");
 			return check;
 		}
 		sql = "INSERT INTO log (file_name,data_file_config_id,file_status,staging_load_count, timestamp_download, timestamp_insert_staging, timestamp_insert_datawarehouse)"
@@ -179,12 +180,24 @@ public class ChilkatSCPDownload {
 				e.printStackTrace();
 				return check;
 			}
-		}
+			finally {
+				try {
+					if (pst != null)
+						pst.close();
+					if (this.rs != null)
+						this.rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 
-		sendMail("17122099@st.hcmuaf.edu.vn", "GỬI CÔNG CHÚA YÊU DẤU CỦA ANH!", "ANH YÊU EM RẤT NHIEEFUUUU <3");
+			}
+		}
+		//nếu thành công thì cũng gửi mail về thông báo đã tải được file và ghi log
+		sendMail("nguyentrongnghia.itnlu@gmail.com", "DATA WAREHOUSE", "DOWNLOAD FILE SUCCESS & WRITE LOG");
 		return check;
  
 	}
+	//phương thức sendMail
 	public static boolean sendMail(String to, String subject, String bodyMail) {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
