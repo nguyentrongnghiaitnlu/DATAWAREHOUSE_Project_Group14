@@ -20,20 +20,7 @@ public class GetConnection {
 	public Connection getConnection(String location_dbName) {
 		String pathLinkProperties = "D:\\HK6 2019 - 2020\\Data WAREHOUSE\\Datawarehouse_Project_Group14\\config.properties";
 		Connection conn = null;
-		if (location_dbName.equalsIgnoreCase("scp")) {
-			try {
-				InputStream input = new FileInputStream(pathLinkProperties);
-				Properties prop = new Properties();
-				prop.load(input);
-				driver = prop.getProperty("driver_local");
-				url = prop.getProperty("url_local");
-				databasebName = prop.getProperty("dbName_scp");
-				user = prop.getProperty("pass_local");
-				pass = prop.getProperty("pass_local");
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		} else if (location_dbName.equalsIgnoreCase("controldb")) {
+		if (location_dbName.equalsIgnoreCase("controldb")) {
 			try {
 				InputStream input = new FileInputStream(pathLinkProperties);
 				Properties prop = new Properties();
@@ -41,7 +28,7 @@ public class GetConnection {
 				driver = prop.getProperty("driver_local");
 				url = prop.getProperty("url_local");
 				databasebName = prop.getProperty("dbName_controldb");
-				user = prop.getProperty("pass_local");
+				user = prop.getProperty("user_local");
 				pass = prop.getProperty("pass_local");
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -54,7 +41,7 @@ public class GetConnection {
 				driver = prop.getProperty("driver_local");
 				url = prop.getProperty("url_local");
 				databasebName = prop.getProperty("dbName_staging");
-				user = prop.getProperty("pass_local");
+				user = prop.getProperty("user_local");
 				pass = prop.getProperty("pass_local");
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -67,7 +54,7 @@ public class GetConnection {
 				driver = prop.getProperty("driver_local");
 				url = prop.getProperty("url_local");
 				databasebName = prop.getProperty("dbName_datawarehouse");
-				user = prop.getProperty("pass_local");
+				user = prop.getProperty("user_local");
 				pass = prop.getProperty("pass_local");
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -88,13 +75,14 @@ public class GetConnection {
 //			System.exit(0);
 			e.printStackTrace();
 		}
-		
+
 		return conn;
 	}
+
 	public static void main(String[] args) {
 		Connection conn = new GetConnection().getConnection("staging");
-		
+
 		System.out.println(conn);
-		
+
 	}
 }
