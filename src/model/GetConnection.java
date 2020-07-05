@@ -28,7 +28,7 @@ public class GetConnection {
 				driver = prop.getProperty("driver_local");
 				url = prop.getProperty("url_local");
 				databasebName = prop.getProperty("dbName_scp");
-				user = prop.getProperty("pass_local");
+				user = prop.getProperty("user_local");
 				pass = prop.getProperty("pass_local");
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -41,7 +41,7 @@ public class GetConnection {
 				driver = prop.getProperty("driver_local");
 				url = prop.getProperty("url_local");
 				databasebName = prop.getProperty("dbName_controldb");
-				user = prop.getProperty("pass_local");
+				user = prop.getProperty("user_local");
 				pass = prop.getProperty("pass_local");
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -54,7 +54,7 @@ public class GetConnection {
 				driver = prop.getProperty("driver_local");
 				url = prop.getProperty("url_local");
 				databasebName = prop.getProperty("dbName_staging");
-				user = prop.getProperty("pass_local");
+				user = prop.getProperty("user_local");
 				pass = prop.getProperty("pass_local");
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -67,7 +67,7 @@ public class GetConnection {
 				driver = prop.getProperty("driver_local");
 				url = prop.getProperty("url_local");
 				databasebName = prop.getProperty("dbName_datawarehouse");
-				user = prop.getProperty("pass_local");
+				user = prop.getProperty("user_local");
 				pass = prop.getProperty("pass_local");
 			} catch (IOException ex) {
 				ex.printStackTrace();
