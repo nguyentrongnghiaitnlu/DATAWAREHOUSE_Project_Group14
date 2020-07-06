@@ -6,8 +6,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import hung_project.ConnectDB;
-import hung_project.LoadtoDW;
+import phan3.ConnectDB;
 
 public class putIntoDatawarehouse {
 	static String start = null;
