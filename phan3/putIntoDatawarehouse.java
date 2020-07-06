@@ -27,10 +27,11 @@ public class putIntoDatawarehouse {
 				String errorQ = "SET SQL_SAFE_UPDATES = 0";
 				sta.executeUpdate(errorQ);
 				System.out.println("Ngat ket noi");
-				// Chen Data den DataStore
-				String insertStore = "INSERT SINHVIEN.DATASTORE SELECT * FROM SINHVIEN.STAGING ";
+				// Chen Data den Datawarehouse
+		
+				String insertStore = "INSERT DATAWAREHOUSE.DATA SELECT * FROM SINHVIEN.STAGING ";
 				sta.executeUpdate(insertStore);
-				System.out.println("Lay data tu Staging den DataStore");
+				System.out.println("Lay data tu Staging den Datawarehouse");
 				String DBsinhvien = "Su dung DB sinhvien";
 				sta.executeUpdate(DBsinhvien);
 				System.out.println("select DB sinhvien");
@@ -60,9 +61,9 @@ public class putIntoDatawarehouse {
 						System.out.println(stt);
 						System.out.println("Hien thi dong bi loi");
 					}
-					String deleteStore = "DELETE FROM sinhvien.datastore";
+					String deleteStore = "DELETE FROM  DATAWAREHOUSE.DATA";
 					sta.executeUpdate(deleteStore);
-					System.out.println("Xoa thang cong datastore");
+					System.out.println("Xoa thang cong datawarehouse");
 					String deleteTemp = "truncate table temp";
 					sta.executeUpdate(deleteTemp);
 					System.out.println("Xoa thanh cong temp");
@@ -70,7 +71,7 @@ public class putIntoDatawarehouse {
 				} else {
 					System.out.println("Database giong nhau");
 					System.out.println("Chen Data vao DataWarehouse");
-					String insertDW = "INSERT SINHVIEN.DATAWAREHOUSE SECLECT * FROM SINHVIEN.DATASTORE";
+					String insertDW = "INSERT DATAWAREHOUSE.DATAWAREHOUSE SECLECT * FROM DATAWAREHOUSE.DATA";
 					sta.executeUpdate(insertDW);
 					String updateLog = "UPDATE datacontrol.log SET  log.statusend ='' WHERE log.idlog LIKE '1'";
 					sta.executeUpdate(updateLog);
