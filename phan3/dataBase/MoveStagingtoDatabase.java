@@ -91,6 +91,7 @@ public class MoveStagingtoDatabase {
 		String result = "";
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("create table if not exists datawarehousedb.datawarehouse(");
+		stringBuilder.append("num int(50) auto_increment not null primary key, id varchar(255) null, first_name varchar(255) null, last_name varchar(255) null, dob varchar(255) null, id_class varchar(255) null, class_name varchar(255) null, number_phone varchar(255) null, email varchar(255) null, address varchar(255) null, note varchar(255) null");
 		stringBuilder.append(");");
 		System.out.println(stringBuilder.toString());
 		result = stringBuilder.toString();
